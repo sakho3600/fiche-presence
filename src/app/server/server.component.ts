@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
-
+import { Response } from '@angular/http';
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent implements OnInit {
-
+  appName = this.serverService.getAppName();
   title = 'fiche-poste';
   servers = [
     {
@@ -39,10 +39,30 @@ export class ServerComponent implements OnInit {
              (error) => console.log(error)
          );
   }
+
+  onGet() {
+    this.serverService.getServers()
+        .subscribe(
+          
+            // any rjx
+            (servers =>{
+              this.servers = servers;
+              console.log(servers); 
+            } ),
+          // Response           
+          // (response: Response) => {
+            // Response 
+          //   {
+          //   const data = response.json();
+          //   console.log(data);
+          // },
+          (error => console.log(error))
+        )
+  }
   private generateId() {
     return Math.round(Math.random()*10000);
   }
-  
+
   ngOnInit() {
   }
 

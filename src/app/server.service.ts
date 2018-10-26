@@ -1,12 +1,46 @@
 import { Injectable } from "@angular/core";
 // import { Http2SecureServer } from "http2";
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
+import 'rxjs/Rx';
+import { map } from "rxjs/operators";
 
 @Injectable()
 export class ServerService {
     constructor(private http: Http) {}
     storeServers(servers: any[]){
-           return this.http.post('https://fetra-ng-http.firebaseio.com/data.json', servers);
+        const headers = new Headers({'content-type':'application/json'});
+        //    return this.http.post('https://fetra-ng-http.firebaseio.com/data.json',
+        //     servers,
+        //     {headers: headers});
+        return this.http.post('https://app-angular-5961d.firebaseio.com/data.json',
+            servers,
+            {headers: headers});
     }
     
+    getServers() {
+        return this.http.get('https://app-angular-5961d.firebaseio.com/data.json')
+        .map(res =>{
+           const data =  res.json();
+           for (const server of data) {
+               server.name = server.name;
+           }
+           return data;
+        } )
+            // (response: Response) => {
+            //     const data = response.json();
+            //     return data;
+            // }
+        ;
+    }
+
+    getAppName() {
+        return this.http.get('https://fetra-ng-http.firebaseio.com/data/appName.json')
+        .map(
+            (res => {
+                return res.json();
+            }
+        )
+    );
+    }
+
 }
