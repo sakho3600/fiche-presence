@@ -43,19 +43,10 @@ export class ServerComponent implements OnInit {
   onGet() {
     this.serverService.getServers()
         .subscribe(
-          
-            // any rjx
             (servers =>{
               this.servers = servers;
               console.log(servers); 
             } ),
-          // Response           
-          // (response: Response) => {
-            // Response 
-          //   {
-          //   const data = response.json();
-          //   console.log(data);
-          // },
           (error => console.log(error))
         )
   }

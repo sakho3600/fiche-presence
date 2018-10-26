@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-// import { Http2SecureServer } from "http2";
 import { Headers, Http } from '@angular/http';
 import 'rxjs/Rx';
 import { map } from "rxjs/operators";
@@ -9,9 +8,6 @@ export class ServerService {
     constructor(private http: Http) {}
     storeServers(servers: any[]){
         const headers = new Headers({'content-type':'application/json'});
-        //    return this.http.post('https://fetra-ng-http.firebaseio.com/data.json',
-        //     servers,
-        //     {headers: headers});
         return this.http.post('https://app-angular-5961d.firebaseio.com/data.json',
             servers,
             {headers: headers});
@@ -26,10 +22,6 @@ export class ServerService {
            }
            return data;
         } )
-            // (response: Response) => {
-            //     const data = response.json();
-            //     return data;
-            // }
         ;
     }
 
