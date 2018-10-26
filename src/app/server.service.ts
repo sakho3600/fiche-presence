@@ -6,8 +6,7 @@ import { Http } from '@angular/http';
 export class ServerService {
     constructor(private http: Http) {}
     storeServers(servers: any[]){
-           return this.http.post('http://127.0.0.1:8000/', servers)
-        //    
+           return this.http.post('https://fetra-ng-http.firebaseio.com/data.json', servers);
     }
     
 }

@@ -1,0 +1,21 @@
+@keyframes example {
+    0%   {background-color: darkorange;}
+    25%  {background-color: darkviolet;}
+    50%  {background-color: hotpink;}
+    100% {background-color: deeppink;}
+}
+
+/* The element to apply the animation to */
+
+
+.menu {
+    margin-right: 50px;
+    margin-top: 35px;
+    border-right: 1px solid blue;
+    background-color: chartreuse;
+    color: black;
+    animation-name: example;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    border-radius: 25px;
+}
