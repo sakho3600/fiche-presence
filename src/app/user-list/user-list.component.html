@@ -13,11 +13,11 @@
             <tr *ngFor="let user of userList">
               <td>{{ user.Id }}</td>
               <td>{{ user.name }}</td>
-              <td><input type="checkbox"
+              <td><input type="checkbox" #present="ngModel"
                   (change)="onTouched(user)"
                   class="checkbox"
                   name="{{ user }}"
-                  [(ngModel)]="user.isPresent"></td>
+                  [(ngModel)]="user.isPresent"></td>    
             </tr>
          </tbody> 
       </table>

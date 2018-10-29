@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserListService } from '../services/user-list.service';
 import { ScoreListComponent } from '../score-list/score-list.component';
 import { ScoreListService } from '../services/score-list.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-user-list',
@@ -25,7 +26,12 @@ export class UserListComponent implements OnInit {
 
   onTouched(user) {
     this.scoreService.onPush(user);
-    console.log(user);
+    this.userService.onCreate(user)
+        .subscribe(
+          (response) =>{console.log(response)},
+          (error) => {console.log('An erro occure:'+ error)},
+        )
+    // console.log(user);
   }
 
   onGet() {

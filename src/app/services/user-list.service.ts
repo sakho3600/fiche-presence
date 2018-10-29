@@ -13,11 +13,20 @@ export class UserListService {
 
   onCreate(user: any[]) {
     const headers = new Headers({'content-type':'application/json'});
-    return this.http.post('localhost',
+    return this.http.post('https://score-3fe54.firebaseio.com/data.json',
                           user,
                           {headers: headers})
   }
 
+  onGet() {
+    return this.http.get('https://score-3fe54.firebaseio.com/data.json')
+                    .map(
+                      (res) => {
+                       const list = res.json();
+                       return list ;
+                      }
+                    )
+  }
   onPush(user) {
     return this.users.push(user);
   }  

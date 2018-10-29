@@ -8,14 +8,21 @@ import { UserListService } from '../services/user-list.service';
 })
 export class ScoreListComponent implements OnInit {
 
-  listScores = [];
+  listScores : any[];
   constructor(private scoreList: ScoreListService, private userService: UserListService) { }
 
   ngOnInit() {
     return this.listScores = this.scoreList.listScores;
   }
 
-  
-
-
+  onClick() {
+    // console.log("hello");
+    return this.userService.onGet()
+                .subscribe(
+                  (user: any[]) => { this.listScores = user;
+                    console.log(this.listScores);
+                  },
+                  (error) => { console.log("An erro occure:"+ error);}
+                )
+  }
 }
