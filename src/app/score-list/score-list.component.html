@@ -10,7 +10,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let score of listScores">
-          <td>{{score.date}}</td>
+          <td>{{score.date | date: "yyyy-MM-dd"}}</td>
           <td>{{score.name}}</td>
           <td>{{score.isPresent}}</td>
         </tr>

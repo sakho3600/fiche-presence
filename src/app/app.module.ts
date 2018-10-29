@@ -25,7 +25,6 @@ const appRoutes: Routes = [
   { path: 'score', component: ScoreComponent },
   { path: 'score-list', component: ScoreListComponent },
   { path: 'user-list', component: UserListComponent },
-  { path: '', component: AppComponent }
 ];
 
 @NgModule({
